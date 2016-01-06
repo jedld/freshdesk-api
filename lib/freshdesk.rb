@@ -4,6 +4,22 @@ require 'uri'
 require 'json'
 
 class Freshdesk
+  class Response
+    attr_accessor :body, :base_url
+
+    def initialize(base_url, response)
+      @base_url = base_url
+      @body = JSON.parse(response)
+    end
+
+    def ticket_id
+      @body["helpdesk_ticket"]["id"]
+    end
+
+    def ticket_url
+      "#{base_url}helpdesk/#{ticket_id}"
+    end
+  end
 
   class Ticket
     STATUS_OPEN = 2
@@ -24,7 +40,6 @@ class Freshdesk
   attr_accessor :base_url
 
   def initialize(base_url, username, password='X')
-
     @base_url = base_url
     @auth = {:user => username, :password => password}
   end
@@ -147,7 +162,7 @@ class Freshdesk
         raise
       end
 
-      response
+      Freshdesk::Response.new(@base_url, response)
     end
   end
 

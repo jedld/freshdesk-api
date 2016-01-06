@@ -10,6 +10,6 @@ Gem::Specification.new do |s|
   s.email       = 'tsmacdonald@gmail.com'
   s.files       = ["lib/freshdesk.rb"]
   s.homepage    = 'https://github.com/dvliman/freshdesk-api'
-  s.add_runtime_dependency 'rest-client', "~> 1.8"
+  s.add_runtime_dependency 'rest-client'
   s.add_runtime_dependency 'nokogiri'
 end
