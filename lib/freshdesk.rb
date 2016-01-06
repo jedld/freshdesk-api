@@ -17,7 +17,7 @@ class Freshdesk
     end
 
     def ticket_url
-      "#{base_url}helpdesk/#{ticket_id}"
+      "#{@base_url}helpdesk/#{ticket_id}"
     end
   end
 
